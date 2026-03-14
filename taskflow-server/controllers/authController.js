@@ -10,7 +10,7 @@ exports.login = async (req,res)=>{
         if(!user){ return res.json({"success":false,"errors":{'message':'Invalid email'}})}
 
         const valid = await validatePassword(Password,user.Password) 
-        if(!valid){ return res.json({"success":false,"errors":{'message':'Email or Password is Invalid'}})}
+        if(!valid){ return res.json({"success":false,"errors":{'message':'Invalid email or password.'}})}
 
         const userId = user._id ;
         const token = await generateToken(userId) ;
@@ -33,7 +33,7 @@ exports.register = async (req,res)=>{
 
         res.json({"success":true,"message":"user created succesfuly"})
     }catch(err){
-        res.status(500).json({"message":`l'authentification est échoué ${err} `})
+        res.status(500).json({"message":`Authentification are feild ${err} `})
     }
 }
 

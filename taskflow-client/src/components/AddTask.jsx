@@ -20,7 +20,7 @@ export default function AddTask() {
     }
     else{
       navigate('/tasks')
-      toast.success("tache ajouter avec success");
+      toast.success("Task created successfully");
     }
   }
 

@@ -4,26 +4,26 @@ const taskValidation = async (req,res,next)=>{
         const {Title,Description,Priority,Status,Due_Date} = req.body ;
         let errors = {};
         if(!Title){
-            errors = { ...errors ,'Title':"le titre est obligatoire !"}
+            errors = { ...errors ,'Title':"Title is required"}
         }
         if(!Description){
-            errors = { ...errors , 'Description':"la description est obligatoire !"};
+            errors = { ...errors , 'Description':"Description is required"};
         }
         if(Priority){
             if(Priority !== "Low" && Priority !== "High" && Priority !== "Medium"){
-                errors = { ...errors , 'Priority':"Priority est Invalide !"};
+                errors = { ...errors , 'Priority':"Invalide Priority"};
             }
         }
         if(Status){
             if(Status !== "Pending" && Status !== "Completed" ){
-                errors = { ...errors , 'Status':"Status est Invalide !"};
+                errors = { ...errors , 'Status':"Invalide Status"};
             }
         }
 
         if(Due_Date){
             const date = new Date(Due_Date)
             if (isNaN(date.getTime())) {
-                errors = { ...errors , 'Due_Date':"Date est Invalide !"};
+                errors = { ...errors , 'Due_Date':"Invalide Date"};
             }
         }
         

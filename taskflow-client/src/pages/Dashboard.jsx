@@ -3,7 +3,7 @@ import { useCookies } from "react-cookie"
 import { fetchUserInfo } from '../features/api';
 import Statistiques from '../components/Statistiques';
 import RecentTasks from '../components/RecentTasks';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 
 
@@ -20,6 +20,7 @@ export default function Dashboard() {
   useEffect(()=>{
     if(!cookies.access_token){
       navigate("/")
+      toast.error("You are not authorized to access this page.");
     }
     else if (cookies.access_token){
         fetchUser(cookies.access_token)

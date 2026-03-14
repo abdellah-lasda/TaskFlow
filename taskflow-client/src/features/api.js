@@ -110,6 +110,7 @@ export const markedcomplet = async (token,id)=>{
     try{
         const authorization =  { headers:{ Authorization: `Bearer ${token}` } };
         const {data:result} = await axios.put(`${url}task/markedcomplet/${id}`,{},authorization);
+        console.log(result)
         return result
     }catch(err){
         console.log({'message':`marke task completed transaction are failed ${err.message}`})

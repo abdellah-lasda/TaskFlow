@@ -29,7 +29,7 @@ export default function Login() {
     }
     else{
       setCookies("access_token",data.token)
-      toast.success("sign in succesfuly");
+      toast.success("Login successfuly.");
       navigate('/dashboard')
     }
   }
@@ -51,7 +51,7 @@ export default function Login() {
             </li>
             <li className='my-4' >
               <label className='mb-2 block' htmlFor="">Password</label>
-              <input className={`${ errors.password || errors.message ?"border-red-500" :""}  mx-2 rounded-xl p-2 border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 `} placeholder='password' name='password' type="text" onChange={handelChange} />
+              <input className={`${ errors.password || errors.message ?"border-red-500" :""}  mx-2 rounded-xl p-2 border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 `} placeholder='password' name='password' type="password" onChange={handelChange} />
               { errors.password ? <span className='mx-2 text-sm text-red-500 ' >{errors.password}</span> : ""}
             </li>
             <li>

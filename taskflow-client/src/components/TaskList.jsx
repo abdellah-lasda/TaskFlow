@@ -9,12 +9,12 @@ export default function TaskList({tasks,refresh,setRefresh}) {
     const [cookies,setCookies,removeCookies] = useCookies(['access_token'])
 
     const handleDelete = async (id,token)=>{
-        const result = await confirm('vous vous lait vraiment supprimer cette tache ?')
+        const result = await confirm('Are you sure you want to delete this task?')
         if(result){
             try {
                 await deleteTask(id,token)
                 await setRefresh(!refresh)
-                toast.success("Tâche supprimer avec succès");
+                toast.success("Task deleted successfully");
             } catch (error) {
                 toast.error("Erreur lors de la suppresion de la tâche");
             }
@@ -22,12 +22,12 @@ export default function TaskList({tasks,refresh,setRefresh}) {
     }
 
     const setCompleted = async (id,token)=>{
-        const result = await confirm('vous vous l ait vraiment set cette tache comme complet?')
+        const result = await confirm('Are you sure you want to complet this task?')
         if(result){
             try {
                 await markedcomplet(token,id)
                 await setRefresh(!refresh)
-                toast.success("Tâche completed avec succès");
+                toast.success("Task completed successfully");
             } catch (error) {
                 toast.error("Erreur lors de changement de status de la tâche");
             }

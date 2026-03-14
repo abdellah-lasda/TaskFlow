@@ -5,6 +5,8 @@ import { fetchUserTasks, filterUserTasks } from '../features/api';
 import TaskList from '../components/TaskList';
 import SearchBare from '../components/SearchBare';
 import Loading from "../features/Loading"
+import { toast } from 'react-toastify';
+import { Archive } from 'lucide-react';
 
 
 export default function Tasks() {
@@ -38,6 +40,7 @@ export default function Tasks() {
   useEffect(()=>{
     if(!cookies.access_token){
       navigate("/")
+        toast.error("You are not authorized to access this page.");
     }
     else if(filter){
       filterTaskList(cookies.access_token)
@@ -45,11 +48,14 @@ export default function Tasks() {
     else if(cookies.access_token){
       fetchTaskList(cookies.access_token)
     }
+    else{
+
+    }
   },[cookies,refresh])
 
 
   return (
-    <div className='flex flex-col gap-7' >
+    <div className='flex flex-col gap-7 h-full' >
 
       <section id="head" className="flex justify-between flex-col sm:flex-row gap-y-4.5">
         <section id="welcome" className='' >
@@ -69,9 +75,11 @@ export default function Tasks() {
           tasks.length > 0?
             <TaskList tasks={tasks} refresh={refresh} setRefresh={setRefresh} />
             :
-            <div className='w-full text-xl font-semibold bg-white rounded-2xl border border-gray-300 min-h-40 grid place-content-center ' >
-              <p>taches introvable </p>
-            </div>
+             <div className=" flex flex-col justify-center items-center gap-2 col-span-12 bg-gray-100 min-h-40 rounded-2xl w-full h-full">
+                  <div><Archive/></div>
+                  <span>No tasks yet.</span> 
+                  <Link to={'/tasks/add'} className='text-blue-600 hover:text-blue-600/80' >Create your first task to get started</Link>
+              </div>
         :
           <Loading title={"Task list"} />
       }

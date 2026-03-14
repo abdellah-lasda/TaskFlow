@@ -5,17 +5,17 @@ exports.loginValidation = async (req,res,next)=>{
     let errors = {};
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; 
     if(!Email){
-        errors = { ...errors , 'email':"l'email est obligatoire !"};
+        errors = { ...errors , 'email':"Email is required"};
     }
     else if(!regex.test(Email)){
-        errors = { ...errors ,'email':"l'email est invalide !"}
+        errors = { ...errors ,'email':"Invalide email"}
     }
 
     if(!Password){
-        errors = { ...errors ,'password':"le mot de passe est obligatoire !"}
+        errors = { ...errors ,'password':"Password is required"}
     }
     else if (Password.length < 8){
-        errors = { ...errors ,'password':"le mot de passe doit contien au moin 8 chars !"}
+        errors = { ...errors ,'password':"Password must be at least 8 characters"}
     }
 
     if(Object.keys(errors).length > 0){

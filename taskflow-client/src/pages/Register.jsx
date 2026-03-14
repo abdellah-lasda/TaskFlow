@@ -31,7 +31,7 @@ export default function Register() {
       setErrors(data.errors)
     }
     else{
-      toast.success("account created succesfuly");
+      toast.success("Account created successfully");
       navigate('/')
     }
   }
@@ -58,7 +58,7 @@ export default function Register() {
             </li>
             <li className='my-4' >
               <label className='mb-2 block' htmlFor="">Password</label>
-              <input className={`${ errors.password ?"border-red-500" :""}  mx-2 rounded-xl p-2 border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 `} placeholder='password' name='Password' type="text" onChange={handelChange} />
+              <input className={`${ errors.password ?"border-red-500" :""}  mx-2 rounded-xl p-2 border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 `} placeholder='password' name='Password' type="password" onChange={handelChange} />
               { errors.password ? <span className='mx-2 text-sm text-red-500 ' >{errors.password}</span> : ""}
             </li>
             <li>

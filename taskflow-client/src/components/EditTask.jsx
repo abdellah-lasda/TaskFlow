@@ -21,14 +21,18 @@ export default function AddTask() {
 
     const handleSubmit = async (e)=>{
         e.preventDefault();
+        const test = await confirm('Are you sure you want to update this task?')
+       if(test){
         const result = await updateTask(cookies.access_token,id,tache)
         if(!result.success){
             setErrors(result.errors)
         }
         else{
             navigate('/tasks')
-            toast.success("tache modified avec success");
+            toast.success("Task updated successfully.");
         }
+       }
+        
     }
 
     const fetchTach = async ()=>{

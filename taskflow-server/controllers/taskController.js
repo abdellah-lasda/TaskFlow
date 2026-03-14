@@ -81,7 +81,7 @@ exports.markTaskCompleted = async (req,res)=>{
         const task = await TaskModel.findOne({User_reference,_id});
         if(!task) return res.status(404).json({'message':"task not found or is not one of your tasks"});
         task.Status = "Completed";
-        task.Due_Date = new Date().toLocaleString();
+        task.Due_Date = new Date();
 
         await task.save()
 

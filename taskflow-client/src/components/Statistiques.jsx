@@ -12,10 +12,10 @@ export default function Statistiques() {
       const statistiques = await fetchStatistiques(token)
 
       setInfo({
-        totalObject: {titre:"total tasks",valeur:statistiques?.total,name:"total"} ,
-        completedObject: {titre:"completed",valeur:statistiques?.completed,name:"completed"} ,
-        pendingObject: {titre:"pending",valeur:statistiques?.pending,name:"pending"} ,
-        hightObject: {titre:"hight priority",valeur:statistiques?.hight,name:"hight"}
+        totalObject: {titre:"total tasks",valeur:statistiques?.total,name:"total"||0} ,
+        completedObject: {titre:"completed",valeur:statistiques?.completed,name:"completed"||0} ,
+        pendingObject: {titre:"pending",valeur:statistiques?.pending,name:"pending"||0} ,
+        hightObject: {titre:"hight priority",valeur:statistiques?.hight,name:"hight"||0}
       });
     }
 

@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState , useEffect } from 'react'
 import AddTask from '../components/AddTask'
 import { ArrowLeft } from 'lucide-react'
 import {Link} from "react-router-dom"
 import { filterUserTasks } from '../features/api';
 import { useCookies } from 'react-cookie'
+import { toast } from 'react-toastify';
 
 
 
 export default function CreateTask() {
   const [cookies,setCookies,removeCookies] = useCookies(['access_token'])
   const [info,setInfo] = useState(null);
+  
   const handleChange = (e)=>{
     const {name,value} = e.target ;
     setInfo({...info,[name]:value})
@@ -18,6 +20,13 @@ export default function CreateTask() {
   const handleSubmit = async ()=>{
     await filterUserTasks(cookies.access_token,info)
   }
+
+  useEffect(()=>{
+        if(!cookies.access_token){
+            navigate("/")
+            toast.error("You are not authorized to access this page.");
+        }
+  },[cookies])
 
   return (
     <div className='sm:w-[70%] mx-auto'>

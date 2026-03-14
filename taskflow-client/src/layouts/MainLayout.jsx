@@ -21,7 +21,7 @@ export default function MainLayout() {
 
     const handleLogout = ()=>{
         removeCookies("access_token")
-        toast.success("log out from your account succesfuly");
+        toast.success("You have successfully logged out");
         navigate('/')
     }
 
@@ -38,7 +38,6 @@ export default function MainLayout() {
     useEffect(()=>{
         if(!cookies.access_token){
             navigate("/")
-            toast.error("accés non autoriseé");
         }
         else if (cookies.access_token){
             fetchUser(cookies.access_token)
